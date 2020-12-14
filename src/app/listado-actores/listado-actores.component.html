@@ -1,0 +1,14 @@
+<table mat-table [dataSource]="listadoActores" class="mat-elevation-z8">
+
+    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    
+  
+    <tr mat-header-row *matHeaderRowDef="listadoColumnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: listadoColumnas;"></tr>
+  </table>
+  
