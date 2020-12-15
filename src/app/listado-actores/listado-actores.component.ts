@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {ServicioActoresService} from '../services/servicio-actores.service';
+import {Actor} from '../interfaces/people-response';
 
 @Component({
   selector: 'app-listado-actores',
@@ -9,14 +10,14 @@ import {ServicioActoresService} from '../services/servicio-actores.service';
 })
 export class ListadoActoresComponent implements OnInit {
 
-  listadoActores = new MatTableDataSource();
-  listadoColumnas = ['name'];
+  
+  listadoActores:Actor[];
 
   constructor(private servicioActores:ServicioActoresService) { }
 
   ngOnInit(): void {
     this.servicioActores.getActores().subscribe((resp)=>{
-      this.listadoActores.data = resp.results;
+      this.listadoActores = resp.results;
     });
   }
 

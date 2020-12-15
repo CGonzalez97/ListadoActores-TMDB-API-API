@@ -1,4 +1,4 @@
-export interface Actor {
+export interface Peliculas {
     backdrop_path: string;
     first_air_date: string;
     genre_ids: number[];
@@ -19,20 +19,20 @@ export interface Actor {
     video?: boolean;
 }
 
-export interface ListaActores {
+export interface Actor {
     adult: boolean;
     gender: number;
     id: number;
-    known_for: Actor[];
+    known_for: Peliculas[];
     known_for_department: string;
     name: string;
     popularity: number;
     profile_path: string;
 }
 
-export interface RootObject {
+export interface ListaActores {
     page: number;
-    results: ListaActores[];
+    results: Actor[];
     total_pages: number;
     total_results: number;
 }

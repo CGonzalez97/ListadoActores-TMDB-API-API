@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="listadoActores" class="mat-elevation-z8">
+<!--<table mat-table [dataSource]="listadoActores" class="mat-elevation-z8">
 
     
     <ng-container matColumnDef="name">
@@ -10,5 +10,22 @@
   
     <tr mat-header-row *matHeaderRowDef="listadoColumnas"></tr>
     <tr mat-row *matRowDef="let row; columns: listadoColumnas;"></tr>
-  </table>
+  </table>-->
+
+  <mat-card *ngFor="let actor of listadoActores" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{actor.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path">
+    <mat-card-content>
+    
+      <p><span *ngFor="let pelicula of actor.known_for">{{pelicula.string}}<br /></span></p>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
   
