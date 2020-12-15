@@ -10,12 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {ServicioActoresService} from './services/servicio-actores.service';
 import {MatButtonModule} from '@angular/material/button';
+import { PeliTopComponent } from './peli-top/peli-top.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoActoresComponent
+    ListadoActoresComponent,
+    PeliTopComponent
   ],
   imports: [
     BrowserModule,

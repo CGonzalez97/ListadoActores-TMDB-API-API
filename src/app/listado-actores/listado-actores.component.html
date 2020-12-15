@@ -17,10 +17,11 @@
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{actor.name}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path">
-    <mat-card-content>
     
-      <p><span *ngFor="let pelicula of actor.known_for">{{pelicula.string}}<br /></span></p>
+    <mat-card-content>
+      <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path">
+      
+      <app-peli-top [actor]="actor"></app-peli-top>
       
     </mat-card-content>
     <mat-card-actions>
