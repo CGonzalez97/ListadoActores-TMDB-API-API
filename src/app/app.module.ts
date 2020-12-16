@@ -11,13 +11,20 @@ import {MatTableModule} from '@angular/material/table';
 import {ServicioActoresService} from './services/servicio-actores.service';
 import {MatButtonModule} from '@angular/material/button';
 import { PeliTopComponent } from './peli-top/peli-top.component';
+import { DetallesActorComponent } from './detalles-actor/detalles-actor.component';
+import { Routes, RouterModule } from '@angular/router';
 
 
+export const routes: Routes = [
+  { path: '', component: ListadoActoresComponent },
+  { path: 'detalles/:id', component: DetallesActorComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
     ListadoActoresComponent,
-    PeliTopComponent
+    PeliTopComponent,
+    DetallesActorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +33,9 @@ import { PeliTopComponent } from './peli-top/peli-top.component';
     BrowserAnimationsModule,
     MatTableModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ServicioActoresService],
   bootstrap: [AppComponent]
