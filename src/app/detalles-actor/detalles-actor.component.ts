@@ -3,6 +3,8 @@ import {ServicioActoresService} from '../services/servicio-actores.service';
 import {Detalles} from '../interfaces/detalles';
 import { ActivatedRoute } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-detalles-actor',
   templateUrl: './detalles-actor.component.html',
@@ -10,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetallesActorComponent implements OnInit {
 
-  detalles:Detalles;
+  detallesAux:Detalles;
+  detalles;//:Detalles;
   id: number;
 
   constructor(private servicioActores:ServicioActoresService, private route: ActivatedRoute) { }
@@ -21,11 +24,22 @@ export class DetallesActorComponent implements OnInit {
       this.id = params['id'];
     });*/
     this.solicitarDetalles(this.id);
+
   }
 
   solicitarDetalles(id){
     this.servicioActores.getDetalles(id).subscribe((resp)=>{
-      this.detalles = resp;
+      //this.detalles = resp;//original
+      this.detallesAux = resp;
+      /*this.detalles {name:this.detallesAux.name || '',
+        place_of_birth: this.detallesAux.place_of_birth || '',
+        birthday: this.detallesAux.birthday || '',
+      } = this.detallesAux;*/
+      const {name = 'Sin nombre', place_of_birth = 'Sin lugar de nacimiento', birthday = 'Sin fecha de nacimiento', biography = 'Sin biografía'}  = this.detallesAux || {};
+      this.detalles.name = name;
+      this.detalles.place_of_birth = place_of_birth;
+      this.detalles.birthday = birthday;
+      this.detalles.biography = biography;
     });
   }
 
