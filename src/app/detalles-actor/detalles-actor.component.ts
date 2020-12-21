@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DetallesActorComponent implements OnInit {
 
   detallesAux:Detalles;
-  detalles;//:Detalles;
+  detalles:Detalles;
   id: number;
 
   constructor(private servicioActores:ServicioActoresService, private route: ActivatedRoute) { }
@@ -30,17 +30,16 @@ export class DetallesActorComponent implements OnInit {
   solicitarDetalles(id){
     this.servicioActores.getDetalles(id).subscribe((resp)=>{
       //this.detalles = resp;//original
-      this.detallesAux = resp;
+      this.detalles = resp;
       /*this.detalles {name:this.detallesAux.name || '',
         place_of_birth: this.detallesAux.place_of_birth || '',
         birthday: this.detallesAux.birthday || '',
       } = this.detallesAux;*/
-      const {name = 'Sin nombre', place_of_birth = 'Sin lugar de nacimiento', birthday = 'Sin fecha de nacimiento', biography = 'Sin biografía'}  = this.detallesAux || {};
-      this.detalles.name = name;
-      this.detalles.place_of_birth = place_of_birth;
-      this.detalles.birthday = birthday;
-      this.detalles.biography = biography;
+      const {name = '', place_of_birth = '', birthday = '', biography = ''}  = this.detalles || {};
+      this.detalles.name = (name == '')? 'Sin nombre' : name;//name;
+      this.detalles.place_of_birth = (place_of_birth == null)?'Sin lugar de nacimiento':place_of_birth;//place_of_birth;
+      this.detalles.birthday = (birthday == null)? 'Sin fecha de nacimiento': birthday;
+      this.detalles.biography = (biography == '')? 'Sin biografía' : biography;
     });
   }
-
 }
